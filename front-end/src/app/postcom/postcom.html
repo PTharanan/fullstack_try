@@ -1,0 +1,30 @@
+<div class="w-[100vw], h-[100vh]">
+    <h2 class="bg-teal-600 text-center text-sky-50 w-[100vw] h-[4vh]"><b>Full-Stack</b></h2>
+    <div class="bg-sky-500 w-[100vw] h-[96vh] flex items-center justify-center">
+        <form (submit)="submitData()" class="bg-white w-[60vw] h-[50vh] flex flex-col md:flex-row rounded-md">
+            <div>
+                <input type="text" name="name" placeholder="Name" [(ngModel)]="new_data.Name" class="border border-black p-2 m-2"> <br><br>
+                <input type="number" name="age" placeholder="Age" [(ngModel)]="new_data.Age" class="border border-black p-2 m-2"> <br><br>
+                <button type="submit" class="bg-sky-500 rounded-md text-sky-50 w-[12vw] p-2 m-2 cursor-pointer">POST</button>
+            </div>
+            <div class="overflow-y-auto w-[60vw] md:w-[50vw] h-[60vh] md:h-[45vh] flex justify-center m-1">
+                <table class="border border-black w-[55vw] md:w-[35vw] m-1" *ngIf="datas.length > 0; else Load">
+                    <tr class="border border-black p-2">
+                        <th class="border border-black p-2 w-[10vw]">Name</th>
+                        <th class="border border-black p-2 w-[8vw]">Age</th>
+                        <th class="border border-black p-2">Actions</th>
+                    </tr>
+                    <tr class="border border-black" *ngFor="let data of datas">
+                        <td class="border border-black p-1">{{data.Name}}</td>
+                        <td class="border border-black p-1">{{data.Age}}</td>
+                        <td class="p-1 flex items-center justify-center">
+                            <button class="bg-sky-500 rounded-md text-sky-50 w-[6vw] p-2 mr-2 cursor-pointer">Edit</button>
+                            <button class="bg-red-500 rounded-md text-sky-50 w-[6vw] p-2 ml-2 cursor-pointer">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+                <ng-template #Load>Loading....</ng-template>
+            </div>
+        </form>
+    </div>
+</div>
